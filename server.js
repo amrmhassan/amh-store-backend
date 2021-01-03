@@ -1,5 +1,5 @@
 //! npm install body-parser
-import './env.js';
+// import './env.js';
 import { app } from './app.js';
 import db from './db.js';
 import './middleWares/middleWares.js';
