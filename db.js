@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 export default {
   connectDB: () => {
     mongoose
-      .connect(process.env.db, {
+      .connect(process.env.db.replace('<PASSWORD>', process.env.db_Password), {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
