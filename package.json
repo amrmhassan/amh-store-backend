@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon.cmd server.js",
-    "debug": "ndb index.js"
+    "debug": "ndb index.js",
+    "heroku-postbuild": "npm install"
   },
   "keywords": [],
   "author": "",
