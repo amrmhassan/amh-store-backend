@@ -10,11 +10,13 @@ import globalErrorHandling from '../utils/globalErrorHandling.js';
 import AppError from '../utils/AppError.js';
 import uploadsRoute from '../routes/uploadsRoute.js';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 const appError = new AppError();
 const __dirname = path.resolve();
 
-app.use(express.json());
+app.use(express.json({ limit: '1mb' }));
+
 app.use(cors());
 
 if (process.env.NODE_ENV === 'development') {
@@ -42,6 +44,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.all('*', (req, res, next) => {
-  return next(appError.addError(`Can't find this url ${req.originalUrl}`, 404));
+  //? for redirecting to home
+  return res.redirect('/');
+
+  //! return next(appError.addError(`Can't find this url ${req.originalUrl}`, 404));
 });
 app.use(globalErrorHandling);
